@@ -1,6 +1,6 @@
 import { IJobTitle } from "../../../../interfaces/jobTitle";
 import { Table } from "../../styles";
-import { Button } from "../../../Button/styles";
+import { Button } from "../../../../styles/Button/styles";
 import { useAppSelector } from "../../../../store/hook";
 import JobTitleCreate from "../../../Modal/components/JobTitles/JobTitleCreate";
 import JobTitleUpdate from "../../../Modal/components/JobTitles/JobTitleUpdate";

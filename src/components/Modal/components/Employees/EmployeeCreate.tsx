@@ -1,16 +1,27 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { Input, ModalContent, Modal, ModalClose, Title } from "../../styles";
 import { IEmployee } from "../../../../interfaces/employee";
-import { useAppDispatch } from "../../../../store/hook";
+import { useAppDispatch, useAppSelector } from "../../../../store/hook";
 import { createEmployee } from "../../../../store/employees";
-import { Button } from "../../../Button/styles";
+import { Button } from "../../../../styles/Button/styles";
 import { AiOutlineClose } from "react-icons/ai";
+import {
+  Input,
+  ModalContent,
+  Modal,
+  ModalClose,
+  Title,
+  Select,
+  Option,
+} from "../../styles";
 
 interface IEmployeeCreateProps {
   onClose: () => void;
 }
 
 export const EmployeeCreate = ({ onClose }: IEmployeeCreateProps) => {
+  const jobTitles = useAppSelector((state) => state.jobTitles);
+  const dispatch = useAppDispatch();
+
   const [employee, setEmployee] = useState<IEmployee>({
     name: "",
     jobTitle: "",
@@ -18,7 +29,9 @@ export const EmployeeCreate = ({ onClose }: IEmployeeCreateProps) => {
     id: Math.random().toString(16).slice(2),
   });
 
-  const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setEmployee((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -31,7 +44,7 @@ export const EmployeeCreate = ({ onClose }: IEmployeeCreateProps) => {
     }
     onClose();
   };
-  const dispatch = useAppDispatch();
+
   return (
     <Modal onClick={onClose}>
       <ModalContent onClick={(event) => event.stopPropagation()}>
@@ -50,7 +63,7 @@ export const EmployeeCreate = ({ onClose }: IEmployeeCreateProps) => {
               type="text"
               name="name"
               value={employee.name}
-              onChange={handleChangeInput}
+              onChange={handleChange}
             />
           </label>
           <label>
@@ -61,17 +74,21 @@ export const EmployeeCreate = ({ onClose }: IEmployeeCreateProps) => {
               min="1"
               max="100"
               value={employee.age}
-              onChange={handleChangeInput}
+              onChange={handleChange}
             />
           </label>
           <label>
             Job Title
-            <Input
-              type="text"
-              name="jobTitle"
-              value={employee.jobTitle}
-              onChange={handleChangeInput}
-            />
+            <Select name="jobTitle" onChange={handleChange}>
+              {jobTitles.jobTitles.map((jobTitle) => (
+                <Option
+                  key={jobTitle.id}
+                  value={jobTitle.department + " | " + jobTitle.designation}
+                >
+                  {jobTitle.department} | {jobTitle.designation}
+                </Option>
+              ))}
+            </Select>
           </label>
           <Button onClick={handleSubmit}>Add</Button>
         </form>

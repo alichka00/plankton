@@ -9,7 +9,6 @@ export default createGlobalStyle`
 
 
   body{
-    text-align: center;
     background-color: #0f0d0df7;
     font-family: "Abel", sans-serif;
     color: #fffc;
@@ -17,5 +16,9 @@ export default createGlobalStyle`
 
   table{
     margin: 0;
+  }
+
+  li{
+    list-style-type: none;
   }
 `;

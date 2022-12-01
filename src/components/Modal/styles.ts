@@ -24,6 +24,7 @@ export const ModalContent = styled.div`
   max-height: 450px;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border-radius: 10px;
+  text-align: center;
 `;
 
 export const Input = styled.input`
@@ -47,4 +48,24 @@ export const ModalClose = styled.div`
 export const Title = styled.div`
   font-weight: 24px;
   margin-bottom: 30px;
+`;
+
+export const Select = styled.select`
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fffc;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+`;
+
+export const Option = styled.option`
+  background-color: #0f0d0df7;
+  color: #fffc;
+  cursor: pointer;
 `;

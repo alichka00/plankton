@@ -3,7 +3,7 @@ import { Input, ModalContent, Modal, ModalClose, Title } from "../../styles";
 import { IJobTitle } from "../../../../interfaces/jobTitle";
 import { useAppDispatch } from "../../../../store/hook";
 import { updateJobTitle } from "../../../../store/jobTitles";
-import { Button } from "../../../Button/styles";
+import { Button } from "../../../../styles/Button/styles";
 import { AiOutlineClose } from "react-icons/ai";
 
 interface IJobTitleUpdateProps {

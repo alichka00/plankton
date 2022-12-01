@@ -1,6 +1,6 @@
 import { IEmployee } from "../../../../interfaces/employee";
 import { Table } from "../../styles";
-import { Button } from "../../../Button/styles";
+import { Button } from "../../../../styles/Button/styles";
 import { useAppSelector } from "../../../../store/hook";
 import { EmployeeCreate } from "../../../Modal/components/Employees/EmployeeCreate";
 import { EmployeeUpdate } from "../../../Modal/components/Employees/EmployeeUpdate";

@@ -1,7 +1,7 @@
 import { ModalContent, Modal, ModalClose, Title } from "../../styles";
 import { useAppDispatch } from "../../../../store/hook";
 import { deleteEmployee } from "../../../../store/employees";
-import { Button } from "../../../Button/styles";
+import { Button } from "../../../../styles/Button/styles";
 import { AiOutlineClose } from "react-icons/ai";
 
 interface IEmployeeDeleteProps {

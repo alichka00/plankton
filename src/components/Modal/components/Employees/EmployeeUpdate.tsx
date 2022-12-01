@@ -1,10 +1,19 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { Input, ModalContent, Modal, ModalClose, Title } from "../../styles";
 import { IEmployee } from "../../../../interfaces/employee";
+import { useAppSelector } from "../../../../store/hook";
 import { useAppDispatch } from "../../../../store/hook";
 import { updateEmployee } from "../../../../store/employees";
-import { Button } from "../../../Button/styles";
+import { Button } from "../../../../styles/Button/styles";
 import { AiOutlineClose } from "react-icons/ai";
+import {
+  Input,
+  ModalContent,
+  Modal,
+  ModalClose,
+  Title,
+  Select,
+  Option,
+} from "../../styles";
 
 interface IEmployeeUpdateProps {
   onClose: () => void;
@@ -12,6 +21,8 @@ interface IEmployeeUpdateProps {
 }
 
 export const EmployeeUpdate = ({ onClose, employee }: IEmployeeUpdateProps) => {
+  const jobTitles = useAppSelector((state) => state.jobTitles);
+
   const [currentEmployee, setCurrentEmployee] = useState<IEmployee>({
     name: employee.name,
     jobTitle: employee.jobTitle,
@@ -20,7 +31,9 @@ export const EmployeeUpdate = ({ onClose, employee }: IEmployeeUpdateProps) => {
   });
   const dispatch = useAppDispatch();
 
-  const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setCurrentEmployee((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -63,7 +76,7 @@ export const EmployeeUpdate = ({ onClose, employee }: IEmployeeUpdateProps) => {
               type="text"
               name="name"
               value={currentEmployee.name}
-              onChange={handleChangeInput}
+              onChange={handleChange}
             />
           </label>
           <label>
@@ -74,17 +87,21 @@ export const EmployeeUpdate = ({ onClose, employee }: IEmployeeUpdateProps) => {
               min="1"
               max="100"
               value={currentEmployee.age}
-              onChange={handleChangeInput}
+              onChange={handleChange}
             />
           </label>
           <label>
             Job Title
-            <Input
-              type="text"
-              name="jobTitle"
-              value={currentEmployee.jobTitle}
-              onChange={handleChangeInput}
-            />
+            <Select name="jobTitle" onChange={handleChange}>
+              {jobTitles.jobTitles.map((jobTitle) => (
+                <Option
+                  key={jobTitle.id}
+                  value={jobTitle.department + " | " + jobTitle.designation}
+                >
+                  {jobTitle.department} | {jobTitle.designation}
+                </Option>
+              ))}
+            </Select>
           </label>
           <Button onClick={handleSubmit}>Update</Button>
         </form>
