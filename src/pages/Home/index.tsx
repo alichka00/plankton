@@ -1,21 +1,21 @@
-import { Container, Title, ListItem } from "./styles";
+import * as S from "./styles";
 import { SiReact } from "react-icons/si";
 import { SiTypescript } from "react-icons/si";
 import { SiRedux } from "react-icons/si";
 import { BsBrush } from "react-icons/bs";
-import { Tabs } from "../../components/Tabs/components/TabBar/Tabs";
-import { Tab } from "../../components/Tabs/components/TabBar/Tab";
-import { EmployeeInfoTab } from "../../components/Tabs/components/EmployeeTab";
-import { EmployeesTab } from "../../components/Tabs/components/EmployeesInfoTab";
-import { JobTitlesTab } from "../../components/Tabs/components/JobTitlesTab";
-import { JsonTab } from "../../components/Tabs/components/JsonTab";
-import { Footer } from "../../components/Footer";
+import { Tabs } from "components/Tabs/components/TabBar/Tabs";
+import { Tab } from "components/Tabs/components/TabBar/Tab";
+import { EmployeesTab } from "components/Tabs/components/EmployeesTab";
+import { EmployeesInfoTab } from "components/Tabs/components/EmployeesInfoTab";
+import { JobsTab } from "components/Tabs/components/JobTab";
+import { JsonTab } from "components/Tabs/components/JsonTab";
+import { Footer } from "components/Footer";
 
 export const Home = () => {
   return (
-    <Container>
-      <Title>Technologies</Title>
-      <ListItem>
+    <S.Container>
+      <S.Title>Technologies</S.Title>
+      <S.ListItem>
         <ul>
           <li>
             <SiReact color="#61DAFB" /> React
@@ -26,24 +26,29 @@ export const Home = () => {
           <li>
             <SiRedux color="#764ABC" /> Redux
           </li>
-          <BsBrush color="#6e3fa9" /> Styled Components
+          <li>
+            <BsBrush color="#6e3fa9" /> Styled Components
+          </li>
+          <li>
+            <SiReact color="#E91E63" /> React Icons
+          </li>
         </ul>
-      </ListItem>
+      </S.ListItem>
       <Tabs>
-        <Tab title="Employees Info">
-          <EmployeeInfoTab />
+        <Tab title="Employees Info" id="employeesInfo">
+          <EmployeesInfoTab />
         </Tab>
-        <Tab title="Employees">
+        <Tab title="Employees" id="employees">
           <EmployeesTab />
         </Tab>
-        <Tab title="Job Titles">
-          <JobTitlesTab />
+        <Tab title="Jobs" id="jobs">
+          <JobsTab />
         </Tab>
-        <Tab title="JSON">
+        <Tab title="JSON" id="json">
           <JsonTab />
         </Tab>
       </Tabs>
       <Footer />
-    </Container>
+    </S.Container>
   );
 };

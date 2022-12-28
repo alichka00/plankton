@@ -1,27 +1,33 @@
-import { ReactElement, useState } from "react";
-import { TabTitle } from "./TabTitle";
-import { StyleTabBar } from "./styles";
+import { ReactElement } from "react";
+import { useSearchParams } from "react-router-dom";
+import * as S from "./styles";
 
-interface ITabsProps {
+interface I_TabsProps {
   children: ReactElement[];
 }
 
-export const Tabs: React.FC<ITabsProps> = ({ children }) => {
-  const [selectedTab, setSelectedTab] = useState(0);
+export const Tabs: React.FC<I_TabsProps> = ({ children }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const tab = searchParams.get("tab");
+  console.log(tab);
 
   return (
     <>
-      <StyleTabBar>
-        {children.map((item, index) => (
-          <TabTitle
-            key={index}
+      <S.TabBar>
+        {children.map((item) => (
+          <S.Tab
+            key={item.props.id}
             title={item.props.title}
-            index={index}
-            setSelectedTab={setSelectedTab}
-          />
+            isActive={tab === item.props.id}
+            onClick={() => {
+              setSearchParams({ tab: item.props.id });
+            }}
+          >
+            {item.props.title}
+          </S.Tab>
         ))}
-      </StyleTabBar>
-      {children[selectedTab]}
+      </S.TabBar>
+      {children.find((item) => tab === item.props.id) || children[0]}
     </>
   );
 };

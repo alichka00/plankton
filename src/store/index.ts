@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import employeesReducer from "./employees";
-import jobTitlesReducer from "./jobTitles";
+import jobsReducer from "./jobs";
 
 const store = configureStore({
   reducer: {
     employees: employeesReducer,
-    jobTitles: jobTitlesReducer,
+    jobs: jobsReducer,
   },
 });
 

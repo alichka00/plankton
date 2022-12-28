@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import { Table } from "components/Tabs/styles";
+
+export const EmployeeTable = styled(Table)``;
 
 export const Card = styled.div`
   padding: 10px;
@@ -46,7 +49,7 @@ export const CardAvatar = styled.img`
   );
 `;
 
-export const CardInf = styled.div`
+export const CardInfo = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;

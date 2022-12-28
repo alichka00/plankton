@@ -16,5 +16,6 @@ export const Button = styled.button<IButtonProps>`
   :hover {
     background: #9f6ab9;
     color: #67144e;
+    transition: 0.5s;
   }
 `;

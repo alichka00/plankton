@@ -1,6 +1,6 @@
-export interface IEmployee {
+export interface I_Employee {
   name: string;
-  jobTitle: string;
+  jobId: string;
   age: string;
   id: string;
 }

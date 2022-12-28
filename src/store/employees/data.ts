@@ -1,17 +1,17 @@
-import { IEmployee } from "../../interfaces/employee";
+import { I_Employee } from "interfaces/employee";
 
-export const employeesData: IEmployee[] = [
+export const employeesData: I_Employee[] = [
   {
-    name: "Eva",
-    jobTitle: "Software development | Web developer",
-    age: "25",
     id: "1",
+    name: "Eva",
+    age: "25",
+    jobId: "1",
   },
 
   {
-    name: "Julia",
-    jobTitle: "Database | Database analyst",
-    age: "23",
     id: "2",
+    name: "Julia",
+    age: "23",
+    jobId: "2",
   },
 ];

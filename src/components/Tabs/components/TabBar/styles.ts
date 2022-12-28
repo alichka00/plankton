@@ -1,18 +1,31 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const StyleTabBar = styled.div`
+interface I_TabProps {
+  isActive: boolean;
+}
+
+export const TabBar = styled.div`
   display: flex;
 `;
 
-export const StyleTab = styled.div`
+export const Tab = styled.div<I_TabProps>`
   width: 25%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   box-shadow: 0 0 5px #6e3fa9;
   padding: 10px 50px;
   cursor: pointer;
-  :hover {
-    background: #9f6ab9;
-    color: #67144e;
-  }
+
+  ${({ isActive }) =>
+    isActive
+      ? css`
+          transition: 0.5s;
+          background-color: #9f6ab9;
+          color: #67144e;
+        `
+      : css`
+          transition: 0.5s;
+          background-color: transparent;
+          color: #fffc;
+        `}
 `;

@@ -1,82 +1,38 @@
-import { IEmployee } from "../../../../interfaces/employee";
-import { Table } from "../../styles";
-import { Button } from "../../../../styles/Button/styles";
-import { useAppSelector } from "../../../../store/hook";
-import { EmployeeCreate } from "../../../Modal/components/Employees/EmployeeCreate";
-import { EmployeeUpdate } from "../../../Modal/components/Employees/EmployeeUpdate";
-import { useState } from "react";
-import { EmployeeDelete } from "../../../Modal/components/Employees/EmployeeDelete";
-import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
+import { useAppSelector } from "store/hook";
+import { I_Employee } from "interfaces/employee";
+import * as S from "./styles";
 
-export const EmployeesTab = () => {
+export const EmployeesInfoTab = () => {
   const employees = useAppSelector((state) => state.employees);
+  const jobs = useAppSelector((state) => state.jobs);
 
-  const [createEmpModal, setCreateEmpModal] = useState(false);
-  const [updateEmpModal, setUpdateEmpModal] = useState(false);
-  const [deleteEmpModal, setDeleteEmpModal] = useState(false);
-  const [employee, setEmployee] = useState<IEmployee>({
-    name: "",
-    jobTitle: "",
-    age: "",
-    id: "",
-  });
-  const [empId, setEmpId] = useState("");
-
-  const employeeUpdate = (employee: IEmployee) => {
-    setEmployee(employee);
-    setUpdateEmpModal(true);
-  };
-
-  const employeeDelete = (id: string) => {
-    setEmpId(id);
-    setDeleteEmpModal(true);
+  const getJobTitle = (jobId: string) => {
+    const job = jobs.jobs.find((job) => job.id === jobId);
+    return job ? `${job.department} | ${job.designation}` : "-";
   };
 
   return (
-    <>
-      <Table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Job Title</th>
-            <th>
-              <Button width={120} onClick={() => setCreateEmpModal(true)}>
-                +Add
-              </Button>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {employees.employees.map((employee: IEmployee) => (
-            <tr key={employee.id}>
-              <td>{employee.name}</td>
-              <td>{employee.age}</td>
-              <td>{employee.jobTitle}</td>
-              <td>
-                <Button onClick={() => employeeUpdate(employee)}>
-                  <AiOutlineEdit size={20}>Update</AiOutlineEdit>
-                </Button>{" "}
-                <Button onClick={() => employeeDelete(employee.id)}>
-                  <AiOutlineDelete size={20}>Delete</AiOutlineDelete>
-                </Button>
-              </td>
-            </tr>
+    <S.EmployeeTable>
+      <tbody>
+        <S.CardWrap>
+          {employees.employees.map((employee: I_Employee) => (
+            <td key={employee.id}>
+              <S.Card>
+                <S.CardItem>
+                  <S.CardAvatar
+                    src={`https://avatars.dicebear.com/api/avataaars/${employee.id}.svg`}
+                  />
+                </S.CardItem>
+                <S.CardInfo>
+                  {employee.name} {employee.age} y.o
+                  <br />
+                  {getJobTitle(employee.jobId)}
+                </S.CardInfo>
+              </S.Card>
+            </td>
           ))}
-        </tbody>
-      </Table>
-      {createEmpModal && (
-        <EmployeeCreate onClose={() => setCreateEmpModal(false)} />
-      )}
-      {updateEmpModal && (
-        <EmployeeUpdate
-          employee={employee}
-          onClose={() => setUpdateEmpModal(false)}
-        />
-      )}
-      {deleteEmpModal && (
-        <EmployeeDelete id={empId} onClose={() => setDeleteEmpModal(false)} />
-      )}
-    </>
+        </S.CardWrap>
+      </tbody>
+    </S.EmployeeTable>
   );
 };

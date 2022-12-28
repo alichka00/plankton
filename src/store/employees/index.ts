@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { employeesData } from "./data";
-import { IEmployee } from "../../interfaces/employee";
+import { I_Employee } from "interfaces/employee";
 
 interface employeesState {
-  employees: IEmployee[];
+  employees: I_Employee[];
 }
 
 const initialState: employeesState = {
@@ -14,10 +14,10 @@ const employeesSlice = createSlice({
   name: "employees",
   initialState,
   reducers: {
-    createEmployee(state, action: PayloadAction<IEmployee>) {
+    createEmployee(state, action: PayloadAction<I_Employee>) {
       state.employees.unshift(action.payload);
     },
-    updateEmployee(state, action: PayloadAction<IEmployee>) {
+    updateEmployee(state, action: PayloadAction<I_Employee>) {
       state.employees = state.employees.map((item) =>
         item.id === action.payload.id ? action.payload : item
       );

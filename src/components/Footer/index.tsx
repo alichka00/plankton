@@ -1,9 +1,9 @@
-import { FooterStyle } from "./styles";
+import * as S from "./styles";
 
 export const Footer = () => {
   return (
-    <FooterStyle>
+    <S.Footer>
       © Developed by <a href="https://github.com/alichka00">Alya</a>
-    </FooterStyle>
+    </S.Footer>
   );
 };

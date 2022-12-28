@@ -1,35 +1,35 @@
-import { IJobTitle } from "../../interfaces/jobTitle";
-export const jobTitlesData: IJobTitle[] = [
+import { I_Job } from "interfaces/job";
+export const jobsData: I_Job[] = [
   {
+    id: "1",
     department: "Software development",
     designation: "Web developer",
-    id: "1",
   },
   {
+    id: "2",
     department: "Database",
     designation: "Database analyst",
-    id: "2",
   },
 
   {
+    id: "3",
     department: "Architecture",
     designation: "Technical architect",
-    id: "3",
   },
 
   {
+    id: "4",
     department: "Security",
     designation: "IT security engineer",
-    id: "4",
   },
   {
+    id: "5",
     department: "Management",
     designation: "Product manager",
-    id: "5",
   },
   {
+    id: "6",
     department: "Support",
     designation: "IT support specialist",
-    id: "6",
   },
 ];

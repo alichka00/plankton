@@ -1,8 +1,8 @@
-import { HeaderStyle } from "./styles";
+import * as S from "./styles";
 export const Header = () => {
   return (
-    <HeaderStyle>
+    <S.Header>
       <h2>CRUD Application</h2>
-    </HeaderStyle>
+    </S.Header>
   );
 };
