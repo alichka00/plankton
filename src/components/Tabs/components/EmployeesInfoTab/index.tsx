@@ -12,27 +12,18 @@ export const EmployeesInfoTab = () => {
   };
 
   return (
-    <S.EmployeeTable>
-      <tbody>
-        <S.CardWrap>
-          {employees.employees.map((employee: I_Employee) => (
-            <td key={employee.id}>
-              <S.Card>
-                <S.CardItem>
-                  <S.CardAvatar
-                    src={`https://avatars.dicebear.com/api/avataaars/${employee.id}.svg`}
-                  />
-                </S.CardItem>
-                <S.CardInfo>
-                  {employee.name} {employee.age} y.o
-                  <br />
-                  {getJobTitle(employee.jobId)}
-                </S.CardInfo>
-              </S.Card>
-            </td>
-          ))}
-        </S.CardWrap>
-      </tbody>
-    </S.EmployeeTable>
+    <S.Cards>
+      {employees.employees.map((employee: I_Employee) => (
+        <S.Card key={employee.id}>
+          <S.CardAvatar
+            src={`https://avatars.dicebear.com/api/avataaars/${employee.id}.svg`}
+          />
+          <p>
+            {employee.name} {employee.age} y.o
+          </p>
+          <p>{getJobTitle(employee.jobId)}</p>
+        </S.Card>
+      ))}
+    </S.Cards>
   );
 };

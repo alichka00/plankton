@@ -1,3 +1,4 @@
+import * as S from "./styles";
 interface I_TabProps {
   title: string;
   id: string;
@@ -5,5 +6,5 @@ interface I_TabProps {
 }
 
 export const Tab: React.FC<I_TabProps> = ({ children }) => {
-  return <div>{children}</div>;
+  return <S.TabWrap>{children}</S.TabWrap>;
 };

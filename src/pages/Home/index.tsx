@@ -3,8 +3,8 @@ import { SiReact } from "react-icons/si";
 import { SiTypescript } from "react-icons/si";
 import { SiRedux } from "react-icons/si";
 import { BsBrush } from "react-icons/bs";
-import { Tabs } from "components/Tabs/components/TabBar/Tabs";
-import { Tab } from "components/Tabs/components/TabBar/Tab";
+import { Tabs } from "components/Tabs/components/TabPanels/Tabs";
+import { Tab } from "components/Tabs/components/TabPanels/Tab";
 import { EmployeesTab } from "components/Tabs/components/EmployeesTab";
 import { EmployeesInfoTab } from "components/Tabs/components/EmployeesInfoTab";
 import { JobsTab } from "components/Tabs/components/JobTab";
@@ -35,7 +35,7 @@ export const Home = () => {
         </ul>
       </S.ListItem>
       <Tabs>
-        <Tab title="Employees Info" id="employeesInfo">
+        <Tab title="Info" id="employeesInfo">
           <EmployeesInfoTab />
         </Tab>
         <Tab title="Employees" id="employees">

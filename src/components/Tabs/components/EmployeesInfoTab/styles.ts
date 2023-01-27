@@ -1,30 +1,28 @@
 import styled from "styled-components";
-import { Table } from "components/Tabs/styles";
 
-export const EmployeeTable = styled(Table)``;
+export const Cards = styled.div`
+  padding: 5px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 15px;
+`;
 
 export const Card = styled.div`
-  padding: 10px;
+  padding: 30px 15px 10px;
   height: 270px;
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
-  background: radial-gradient(circle, #2b2b2b, #0f0d0df7);
-`;
-
-export const CardWrap = styled.div`
-  display: flex;
-  justify-content: start;
-`;
-
-export const CardItem = styled.div`
+  align-items: center;
   text-align: center;
-  padding-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: radial-gradient(circle, #2b2b2b, #0f0d0df7);
 `;
 
 export const CardAvatar = styled.img`
   width: 100px;
   height: 100px;
+  margin-bottom: 30px;
   border-radius: 50%;
   box-shadow: #9f6ab9 0 0 10px;
   background-image: radial-gradient(
@@ -47,13 +45,4 @@ export const CardAvatar = styled.img`
     #5b002c 93.75%,
     #5c0025 100%
   );
-`;
-
-export const CardInfo = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 18px;
-  width: 200px;
-  padding: 15px;
 `;
