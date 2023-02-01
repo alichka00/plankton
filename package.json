@@ -1,8 +1,8 @@
 {
-  "name": "crud-app",
+  "name": "plankton",
   "version": "0.1.0",
   "private": true,
-  "homepage": " https://alichka00.github.io/CRUD-App/",
+  "homepage": "https://alichka00.github.io/plankton/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.4",
     "@testing-library/jest-dom": "^5.16.5",
